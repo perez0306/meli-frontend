@@ -1,0 +1,124 @@
+.box {
+    background: #fff;
+    border: 1.5px solid #ededed;
+    border-radius: 16px;
+    padding: 24px 20px 18px 20px;
+    width: 100%;
+    max-width: 420px;
+    font-family: 'Proxima Nova', Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.title {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.products {
+    color: #666;
+    font-size: 0.875rem;
+    margin-bottom: 8px;
+}
+
+.reputationBar {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 10px;
+}
+
+.rep1,
+.rep2,
+.rep3,
+.rep4,
+.rep5 {
+    height: 8px;
+    border-radius: 2px;
+    flex: 1;
+    background: #f7d7db;
+}
+
+.rep2 {
+    background: #f7e1d7;
+}
+
+.rep3 {
+    background: #f7f3d7;
+}
+
+.rep4 {
+    background: #e3f7d7;
+}
+
+.rep5 {
+    background: #00b341;
+}
+
+.metrics {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 8px;
+}
+
+.metric {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.metricValue {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #222;
+}
+
+.metricLabel {
+    color: #888;
+    font-size: 0.825rem;
+    margin-top: 8px;
+    text-align: center;
+}
+
+.metricIcon {
+    font-size: 0.875rem;
+    color: #222;
+    position: relative;
+}
+
+.check {
+    color: #00b341;
+    font-size: 0.8rem;
+    position: absolute;
+    right: -6px;
+    top: 12px;
+}
+
+.moreBtn {
+    background: #f1f7fe;
+    color: #3483fa;
+    border-radius: 8px;
+    padding: 12px 0;
+    text-align: center;
+    font-size: 1.08rem;
+    font-weight: 500;
+    text-decoration: none;
+    margin-top: 8px;
+    transition: background 0.2s;
+    border: none;
+    display: block;
+}
+
+.moreBtn:hover {
+    background: #e3eefd;
+}
+
+@media (max-width: 600px) {
+    .box {
+        max-width: 100vw;
+        padding: 12px 2px;
+    }
+}

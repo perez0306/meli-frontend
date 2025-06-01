@@ -1,0 +1,115 @@
+.box {
+    background: #fff;
+    border: 1.5px solid #ededed;
+    border-radius: 12px;
+    padding: 24px 16px;
+    width: 100%;
+    font-family: 'Proxima Nova', Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.shipping {
+    font-size: 1rem;
+    margin-bottom: 2px;
+}
+
+.freeShipping {
+    color: #00a650;
+    font-weight: 600;
+}
+
+.shippingSub {
+    color: #888;
+    font-size: 0.875rem;
+    margin-top: 2px;
+}
+
+.shippingLink {
+    color: #3483fa;
+    font-size: 0.875rem;
+    text-decoration: none;
+    margin-top: 2px;
+    display: inline-block;
+}
+
+.shippingLink:hover {
+    text-decoration: underline;
+}
+
+.stock {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 8px 0;
+}
+
+.buyBtn {
+    margin-top: 8px;
+    margin-bottom: 4px;
+    font-size: 1.15rem;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cartBtn {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.sellerInfo {
+    font-size: 0.875rem;
+    color: #222;
+    margin-bottom: 2px;
+}
+
+.sellerLink {
+    color: #3483fa;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.sellerLink:hover {
+    text-decoration: underline;
+}
+
+.sellerSales {
+    font-weight: 700;
+}
+
+.benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #666;
+    font-size: 0.875rem;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.icon {
+    margin-right: 6px;
+    font-size: 0.875rem;
+}
+
+.benefitLink {
+    color: #3483fa;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.benefitLink:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .box {
+        width: 100%;
+        padding: 16px 4px;
+    }
+}

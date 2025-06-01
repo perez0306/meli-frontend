@@ -1,0 +1,40 @@
+.button {
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 16px 0;
+    margin: 0;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.2s;
+}
+
+.productsIcon {
+    font-weight: 600;
+}
+
+.primary {
+    background: #3483fa;
+    color: #fff;
+}
+
+.secondary {
+    background: rgba(65,137,230,.15);
+    color: #3483fa;
+}
+
+.small {
+    padding: 10px 0;
+    font-size: 0.875rem;
+}
+
+.large {
+    padding: 24px 0;
+    font-size: 1.125rem;
+}
+
+.button:active {
+    opacity: 0.9;
+}
