@@ -1,26 +1,22 @@
 'use client';
 import styles from './index.module.css';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import Image from 'next/image';
-import { CarouselProps } from '@/types';
 
-const LENS_SIZE = 280; // px
-const ZOOM_SIZE = 620; // px
-const ZOOM_SCALE = 2.5;
+const LENS_SIZE = 180; // px
+const ZOOM_SIZE = 320; // px
+const ZOOM_SCALE = 1.5;
 
-export const Carousel = ({ images }: CarouselProps) => {
+export const Carousel = ({ images }: { images: string[] }) => {
     const [selected, setSelected] = useState(0);
     const [zoom, setZoom] = useState(false);
     const [zoomPos, setZoomPos] = useState({ x: 0, y: 0, offsetX: 0, offsetY: 0, renderWidth: 0, renderHeight: 0 });
     const mainImgRef = useRef<HTMLImageElement>(null);
+    const defaultImage = "https://http2.mlstatic.com/static/org-img/homesnw/mercado-libre.png?v=2";
 
     const handleThumbHover = (idx: number) => {
         setSelected(idx);
     };
-
-    useEffect(() => {
-        console.log(selected);
-    }, [selected]);
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         if (!mainImgRef.current) return;
@@ -59,8 +55,8 @@ export const Carousel = ({ images }: CarouselProps) => {
 
     // Cálculo para el zoomBox
     let zoomImgStyle = {};
-    let zoomImgWidth = 320;
-    let zoomImgHeight = 480;
+    let zoomImgWidth = 150;
+    let zoomImgHeight = 200;
     if (mainImgRef.current && zoomPos.renderWidth && zoomPos.renderHeight) {
         const renderWidth = zoomPos.renderWidth;
         const renderHeight = zoomPos.renderHeight;
@@ -74,7 +70,6 @@ export const Carousel = ({ images }: CarouselProps) => {
         const transX = percX * zoomWidth - ZOOM_SIZE / 2;
         const transY = percY * zoomHeight - ZOOM_SIZE / 2;
         zoomImgStyle = {
-            objectFit: 'contain' as const,
             transform: `translate(-${transX}px, -${transY}px)`
         };
         zoomImgWidth = zoomWidth;
@@ -90,9 +85,9 @@ export const Carousel = ({ images }: CarouselProps) => {
                         src={img}
                         width={56}
                         height={56}
-                        className={idx === selected ? styles.selected : ''}
+                        className={idx === selected ? styles.selected : styles.thumbnail}
                         onMouseEnter={() => handleThumbHover(idx)}
-                        alt={`thumbnail-${img.split('/').pop()}`}
+                        alt={`thumbnail-${img.split('com/')?.[1] || ''}`}
                     />
                 ))}
             </div>
@@ -105,7 +100,7 @@ export const Carousel = ({ images }: CarouselProps) => {
             >
                 <Image
                     ref={mainImgRef as any}
-                    src={images[selected]}
+                    src={images[selected] || defaultImage}
                     alt={`main-${selected}`}
                     width={320}
                     height={480}
@@ -126,7 +121,7 @@ export const Carousel = ({ images }: CarouselProps) => {
                         {/* Zoom */}
                         <div className={styles.zoomBox} style={{ width: ZOOM_SIZE, height: ZOOM_SIZE }}>
                             <Image
-                                src={images[selected]}
+                                src={images[selected] || defaultImage}
                                 alt="zoom"
                                 width={zoomImgWidth}
                                 height={zoomImgHeight}

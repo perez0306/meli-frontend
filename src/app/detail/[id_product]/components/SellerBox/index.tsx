@@ -1,25 +1,44 @@
 import React from 'react';
 import styles from './index.module.css';
-import Button from '@/components/ui/Button';
+import Button from '@/components/ui/button';
+import { SellerBoxI } from '@/types';
 
-const SellerBox = () => {
+const SellerBox = ({ sellerBox }: { sellerBox: SellerBoxI }) => {
+
     return (
         <aside className={styles.box}>
-            <div className={styles.title}>Vendido por JNARVAEZ72</div>
-            <div className={styles.products}><b>+5 </b>Productos</div>
+            <div className={styles.title}>Vendido por {sellerBox.title}</div>
+            <div className={styles.products}>+{sellerBox.products} productos</div>
             <div className={styles.reputationBar}>
-                <span className={styles.rep1}></span>
-                <span className={styles.rep2}></span>
-                <span className={styles.rep3}></span>
-                <span className={styles.rep4}></span>
-                <span className={styles.rep5}></span>
+                {[1, 2, 3, 4, 5].map((n) => (
+                    <span
+                        key={n}
+                        className={styles[`rep${n}`]}
+                        style={{
+                            opacity: n === sellerBox.reputationBar ? 1 : 0.2
+                        }}
+                    ></span>
+                ))}
             </div>
             <div className={styles.metrics}>
-                <div className={styles.metric}><div className={styles.metricValue}>+100</div><div className={styles.metricLabel}>Ventas concretadas</div></div>
-                <div className={styles.metric}><div className={styles.metricIcon}>💬<span className={styles.check}>✔</span></div><div className={styles.metricLabel}>Brinda buena atención</div></div>
-                <div className={styles.metric}><div className={styles.metricIcon}>⏱️<span className={styles.check}>✔</span></div><div className={styles.metricLabel}>Entrega sus productos a tiempo</div></div>
+                {sellerBox.metrics.map((metric) => (
+                    <div className={styles.metric} key={metric.label}>
+                        {metric.value && <div className={styles.metricValue}>{metric.value}</div>}
+                        {metric.icon && (
+                            <div className={styles.metricIcon}>
+                                {metric.icon}
+                                {metric.check && <span className={styles.check}>✔</span>}
+                            </div>
+                        )}
+                        <div className={styles.metricLabel}>{metric.label}</div>
+                    </div>
+                ))}
             </div>
-            <Button size='small' variant='secondary'>Ver más productos del vendedor</Button>
+            <Button size='small' variant='secondary'>
+                <a href={sellerBox.button.link}>
+                    Ver más productos del vendedor
+                </a>
+            </Button>
         </aside>
     );
 };

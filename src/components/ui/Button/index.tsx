@@ -5,11 +5,12 @@ interface ButtonProps {
     children: React.ReactNode;
     variant?: 'primary' | 'secondary';
     size?: 'small' | 'medium' | 'large';
+    onClick?: () => void;
 }
 
-export const Button = ({ children, variant = 'primary', size = 'medium' }: ButtonProps) => {
+export const Button = ({ children, variant = 'primary', size = 'medium', onClick }: ButtonProps) => {
     return (
-        <button className={`${styles.button} ${styles[variant]} ${styles[size]}`}>
+        <button onClick={onClick} className={`${styles.button} ${styles[variant]} ${styles[size]}`}>
             {children}
         </button>
     );

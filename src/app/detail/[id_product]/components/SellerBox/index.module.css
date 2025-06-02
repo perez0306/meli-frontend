@@ -40,16 +40,20 @@
     background: #f7d7db;
 }
 
+.rep1 {
+    background: #e53935;
+}
+
 .rep2 {
-    background: #f7e1d7;
+    background: #fb8c00;
 }
 
 .rep3 {
-    background: #f7f3d7;
+    background: #fdd835;
 }
 
 .rep4 {
-    background: #e3f7d7;
+    background: #43a047;
 }
 
 .rep5 {
