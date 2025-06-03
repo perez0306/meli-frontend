@@ -16,28 +16,27 @@ import ProductDescriptionBox from './productDescriptionBox';
 import { ProductDataI } from '@/types';
 
 export default function DetailPage({ product }: { product: ProductDataI }) {
-
-    return (
-        <div className={styles['detail-container']}>
-            <RelatedLinksSection relatedLinks={product.relatedLinks} />
-            <div className={styles['product-section']}>
-                <div>
-                    <div className={styles['left-col']}>
-                        <Carousel images={product.images} />
-                        <ProductInfo productInfo={product.productInfo} />
-                    </div>
-                    <Divider />
-                    <ProductSpecsBox specs={product.specs} />
-                    <Divider />
-                    <ProductDescriptionBox descriptionBox={product.descriptionBox} />
-                </div>
-                <div className={styles['right-col']}>
-                    <PurchaseBox purchaseBox={product.purchaseBox} />
-                    <SellerBox sellerBox={product.sellerBox} />
-                    <OtherOptionsBox otherOptionsBox={product.sellerBox} />
-                    <PaymentMethodsBox />
-                </div>
-            </div>
+  return (
+    <div className={styles['detail-container']}>
+      <RelatedLinksSection relatedLinks={product.relatedLinks} />
+      <div className={styles['product-section']}>
+        <div>
+          <div className={styles['left-col']}>
+            <Carousel images={product.images} productTitle={product.productInfo.title} />
+            <ProductInfo productInfo={product.productInfo} />
+          </div>
+          <Divider />
+          <ProductSpecsBox specs={product.specs} />
+          <Divider />
+          <ProductDescriptionBox descriptionBox={product.descriptionBox} />
         </div>
-    );
+        <div className={styles['right-col']}>
+          <PurchaseBox purchaseBox={product.purchaseBox} />
+          <SellerBox sellerBox={product.sellerBox} />
+          <OtherOptionsBox otherOptionsBox={product.sellerBox} />
+          <PaymentMethodsBox />
+        </div>
+      </div>
+    </div>
+  );
 }

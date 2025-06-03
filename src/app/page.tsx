@@ -1,5 +1,5 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Image from 'next/image';
+import styles from './page.module.css';
 
 export default function Home() {
   return (
@@ -9,6 +9,7 @@ export default function Home() {
           className={styles.logo}
           src="/next.svg"
           alt="Next.js logo"
+          title="Next.js logo"
           width={180}
           height={38}
           priority
@@ -26,11 +27,13 @@ export default function Home() {
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
+            title="Deploy now en Vercel"
           >
             <Image
               className={styles.logo}
               src="/vercel.svg"
               alt="Vercel logomark"
+              title="Vercel logomark"
               width={20}
               height={20}
             />
@@ -41,6 +44,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.secondary}
+            title="Leer la documentación de Next.js"
           >
             Read our docs
           </a>
@@ -51,11 +55,13 @@ export default function Home() {
           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
           target="_blank"
           rel="noopener noreferrer"
+          title="Aprender Next.js"
         >
           <Image
             aria-hidden
             src="/file.svg"
             alt="File icon"
+            title="File icon"
             width={16}
             height={16}
           />
@@ -65,11 +71,13 @@ export default function Home() {
           href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
           target="_blank"
           rel="noopener noreferrer"
+          title="Ver ejemplos de plantillas en Vercel"
         >
           <Image
             aria-hidden
             src="/window.svg"
             alt="Window icon"
+            title="Window icon"
             width={16}
             height={16}
           />
@@ -79,11 +87,13 @@ export default function Home() {
           href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
           target="_blank"
           rel="noopener noreferrer"
+          title="Ir a nextjs.org"
         >
           <Image
             aria-hidden
             src="/globe.svg"
             alt="Globe icon"
+            title="Globe icon"
             width={16}
             height={16}
           />

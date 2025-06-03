@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'Proxima Nova';
-  src: url('/fonts/Proxima-Nova-Regular.woff2') format('woff2'),
+  src:
+    url('/fonts/Proxima-Nova-Regular.woff2') format('woff2'),
     url('/fonts/Proxima-Nova-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
@@ -9,7 +10,8 @@
 
 @font-face {
   font-family: 'Proxima Nova';
-  src: url('/fonts/Proxima-Nova-Semibold.woff2') format('woff2'),
+  src:
+    url('/fonts/Proxima-Nova-Semibold.woff2') format('woff2'),
     url('/fonts/Proxima-Nova-Semibold.woff') format('woff');
   font-weight: 600;
   font-style: normal;
@@ -28,7 +30,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #111111;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -73,4 +75,20 @@ a:hover {
   html {
     color-scheme: dark;
   }
+}
+
+:focus {
+  outline: 2px solid #3483fa;
+  outline-offset: 2px;
+}
+
+:focus-visible {
+  outline: 2.5px solid #ff823b;
+  outline-offset: 2px;
+}
+
+.primary,
+.button.primary {
+  background: #3483fa;
+  color: #fff;
 }
