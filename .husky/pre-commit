@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+set -e
+
+# Ejecutar tests
+npm run test
+
+# Ejecutar lint-staged
+npx lint-staged
