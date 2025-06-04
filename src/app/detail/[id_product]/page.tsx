@@ -14,10 +14,13 @@ export async function generateMetadata(props: {
     return { title: 'Producto no encontrado' };
   }
 
-  const description = product.descriptionBox.blocks
+  const rawDescription = product.descriptionBox.blocks
     .map((block: DescriptionBoxBlockI) => `${block.subtitle}: ${block.text}`)
-    .join('. ')
-    .slice(0, 160);
+    .join('. ');
+
+  let cutIndex = rawDescription.indexOf('.', 50);
+  if (cutIndex === -1) cutIndex = rawDescription.length;
+  const description = rawDescription.slice(0, cutIndex + 1).trim();
 
   return {
     title: `${product.title} | Mercado Libre`,
@@ -71,7 +74,7 @@ export default async function Page(props: { params: Promise<{ id_product: string
   const { id_product } = await props.params;
   const product = await getProduct(id_product);
   const ua = (await headers()).get('user-agent') || '';
-  console.log('ua', ua);
+
   const isMobile = /mobile|android|iphone|ipad|phone/i.test(ua);
 
   if (!product) {
