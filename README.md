@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Decisiones Técnicas y Convenciones Clave de Mi Proyecto Frontend
 
-## Getting Started
+Este documento resume las decisiones técnicas y convenciones de desarrollo que implementé para la arquitectura frontend de este proyecto, buscando siempre la escalabilidad, mantenibilidad, rendimiento y consistencia.
 
-First, run the development server:
+## Mi Arquitectura Principal
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Elegí React 19 y Next.js 15 (con Node.js) por su eficiencia en la construcción de interfaces complejas y por las ventajas del Server-Side Rendering (SSR). Esto es vital para mejorar el rendimiento inicial de la aplicación y para optimizar el SEO, algo crucial en el contexto del e-commerce de Mercado Libre.
+
+## Calidad y Optimización de Mi Desarrollo
+
+Para asegurar código de alta calidad y eficiencia en mi desarrollo:
+
+- **Jest**: Lo usé para pruebas unitarias y de integración, garantizando la funcionalidad correcta.
+- **Husky**: Lo configuré para automatizar pruebas, formato (Prettier) y análisis (ESLint) antes de cada commit, lo que me permitió mantener el código consistente y libre de errores.
+- **ESLint y Prettier**: Estas herramientas fueron esenciales para mantener mi código limpio, sin errores y con un estilo uniforme.
+- **Optimización con Cursor**: Integré Cursor en mi flujo de trabajo. Su IA para generación y refactorización me permitió optimizar y acelerar el desarrollo de componentes y lógica compleja, reduciendo mi tiempo de implementación y mejorando la calidad inicial del código.
+
+## Mis Convenciones y Estructura
+
+- **Convención de Nombres**: Adopté camelCase por su legibilidad y estandarización.
+- **Estructura de Directorios (Modular)**: Organicé el proyecto priorizando la modularidad y separación de responsabilidades:
+
+```text
+src/
+│
+├── app/                   # Rutas y páginas principales (Next.js 13+)
+│   ├── layout.tsx         # Layout global de la app
+│   ├── page.tsx           # Página principal
+│   ├── globals.css        # Estilos globales
+│   └── detail/            # Ruta de detalle de producto
+│       └── [id_product]/  # Página dinámica de producto
+│           ├── page.tsx
+│           ├── page.module.css
+│           └── components/
+│               ├── purchaseBox/
+│               ├── productInfo/
+│               ├── imagesView/
+│               ├── sellerBox/
+│               ├── relatedLinksSection/
+│               ├── productSpecsBox/
+│               ├── paymentMethodsBox/
+│               ├── otherOptionsBox/
+│               └── productDescriptionBox/
+│
+├── components/            # Componentes globales y reutilizables
+│   ├── ui/                # Componentes de UI (Button, Carousel, Divider, etc.)
+│   └── commons/           # Componentes comunes de negocio (Price, TitleDetail, etc.)
+│
+├── lib/                   # Lógica compartida, utilidades, hooks, stores, API
+│
+└── types/                 # Tipos y modelos TypeScript globales
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- `app/`: El entrypoint y las rutas principales.
+- `app/detail/[id_product]/components/`: Componentes específicos de cada página, con su lógica y estilos encapsulados.
+- `components/ui/`: Componentes de interfaz genéricos y reutilizables (ej. Button).
+- `components/commons/`: Componentes de negocio comunes (ej. PriceDisplay).
+- `lib/`: Lógica compartida, utilidades, hooks y la capa de API.
+- `types/`: Definiciones TypeScript globales para un tipado fuerte y mayor robustez.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ¿Por qué Tomé estas decisiones?
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Mis decisiones se basaron en los siguientes pilares:
 
-## Learn More
+- **Escalabilidad**: Permite que el proyecto crezca sin romper lo existente.
+- **Mantenibilidad**: Facilita la localización de bugs y las actualizaciones.
+- **Reutilización**: Los componentes de UI y negocio pueden usarse en diferentes contextos.
+- **Consistencia**: El tipado fuerte y las convenciones aseguran un estándar de calidad.
+- **Performance y Buenas Prácticas**: Aprovechó las ventajas de Next.js 15 y React 19 para un rendimiento óptimo.
 
-To learn more about Next.js, take a look at the following resources:
+## Mis Desafíos Principales y Soluciones
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Durante el desarrollo, enfrenté desafíos críticos y los abordé estratégicamente:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Adaptación de la UI al Estilo de Mercado Libre**: El reto inicial fue replicar fielmente el diseño y la experiencia de usuario de Mercado Libre, lo que implicó una maquetación meticulosa y responsive para asegurar una adaptación fluida entre desktop y mobile.
+- **Asegurar Cobertura y Atención al Mínimo Detalle**: En un entorno de e-commerce, cada pequeño detalle impacta al usuario. Mi reto fue garantizar que cada aspecto de la aplicación, desde la accesibilidad hasta la interacción más sutil, cumpliera con los estándares más altos.
+- **Mi Solución**: Para abordar estos retos, utilicé Cursor para refinar meticulosamente la implementación. Esta herramienta de IA me permitió optimizar el código y el diseño de los componentes, asegurando la fidelidad visual y funcional en todos los dispositivos. Con su ayuda, pude atacar el mínimo detalle, garantizando que cada elemento cumpliera con los altos estándares de calidad y accesibilidad esperados en un entorno de e-commerce, logrando una mayor cobertura y cumplimiento de los requisitos.
