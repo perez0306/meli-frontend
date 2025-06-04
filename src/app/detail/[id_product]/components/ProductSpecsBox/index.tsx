@@ -23,7 +23,7 @@ const ProductSpecsBox = ({ specs }: { specs: SpecsI[] }) => {
               <span className={styles.iconCircle}>
                 <Image src={spec.icon} alt={spec.label} title={spec.label} width={32} height={32} />
               </span>
-              <div>
+              <div className={styles.rowPrincipalContent}>
                 <div className={styles.label}>
                   {spec.label}: <b>{spec.size}</b>
                 </div>

@@ -1,8 +1,8 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ['http2.mlstatic.com'],
+    remotePatterns: [{ hostname: 'http2.mlstatic.com' }],
   },
 };
 

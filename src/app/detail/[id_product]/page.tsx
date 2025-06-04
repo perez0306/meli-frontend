@@ -2,6 +2,7 @@ import DetailPage from './components';
 import { getProduct } from '@/lib/api/services';
 import { DescriptionBoxBlockI } from '@/types';
 import { Metadata } from 'next';
+import { headers } from 'next/headers';
 
 export async function generateMetadata(props: {
   params: Promise<{ id_product: string }>;
@@ -69,10 +70,13 @@ export async function generateMetadata(props: {
 export default async function Page(props: { params: Promise<{ id_product: string }> }) {
   const { id_product } = await props.params;
   const product = await getProduct(id_product);
+  const ua = (await headers()).get('user-agent') || '';
+  console.log('ua', ua);
+  const isMobile = /mobile|android|iphone|ipad|phone/i.test(ua);
 
   if (!product) {
     return <div>Producto no encontrado</div>;
   }
 
-  return <DetailPage product={product} />;
+  return <DetailPage product={product} isMobile={isMobile} />;
 }

@@ -1,88 +1,87 @@
 .container {
-    background: #f5f6f7;
-    padding: 24px 0 12px 0;
-    font-size: 0.875rem;
-    color: #333;
+  padding: 24px 0 12px 0;
+  font-size: 0.875rem;
+  color: #333;
 }
 
 .suggestions {
-    margin-bottom: 24px;
-    text-align: left;
+  margin-bottom: 24px;
+  text-align: left;
 }
 
 .suggestionsTitle {
-    font-weight: 600;
-    margin-right: 4px;
+  font-weight: 600;
+  margin-right: 4px;
 }
 
 .suggestionLink {
-    color: #333;
-    text-decoration: none;
-    margin: 0 2px;
-    transition: color 0.2s;
+  color: #333;
+  text-decoration: none;
+  margin: 0 2px;
+  transition: color 0.2s;
 }
 
 .suggestionLink:hover {
-    color: #3483fa;
-    text-decoration: underline;
+  color: #3483fa;
+  text-decoration: underline;
 }
 
 .separator {
-    margin: 0 2px;
-    color: #888;
+  margin: 0 2px;
+  color: #888;
 }
 
 .bottomRow {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .breadcrumbs {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 2px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px;
 }
 
 .breadcrumbLink {
-    color: #3483fa;
-    text-decoration: none;
-    margin: 0 2px;
-    font-weight: 400;
-    transition: text-decoration 0.2s;
+  color: #3483fa;
+  text-decoration: none;
+  margin: 0 2px;
+  font-weight: 400;
+  transition: text-decoration 0.2s;
 }
 
 .breadcrumbLink:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .breadcrumbSeparator {
-    color: #888;
-    margin: 0 4px;
+  color: #888;
+  margin: 0 4px;
 }
 
 .actions {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .actionLink {
-    color: #3483fa;
-    text-decoration: none;
-    font-weight: 400;
-    margin: 0 2px;
-    transition: text-decoration 0.2s;
+  color: #3483fa;
+  text-decoration: none;
+  font-weight: 400;
+  margin: 0 2px;
+  transition: text-decoration 0.2s;
 }
 
 .actionLink:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .actionSeparator {
-    color: #888;
-    margin: 0 6px;
+  color: #888;
+  margin: 0 6px;
 }

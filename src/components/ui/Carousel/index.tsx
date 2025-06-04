@@ -1,6 +1,7 @@
 'use client';
 import styles from './index.module.css';
 import React, { useState, useRef } from 'react';
+import { useMediaQuery } from '@mui/material';
 import Image from 'next/image';
 
 const LENS_SIZE = 180; // px
@@ -9,6 +10,7 @@ const ZOOM_SCALE = 1.5;
 
 export const Carousel = ({ images, productTitle }: { images: string[]; productTitle?: string }) => {
   const [selected, setSelected] = useState(0);
+  const [fade, setFade] = useState(false);
   const [zoom, setZoom] = useState(false);
   const [zoomPos, setZoomPos] = useState({
     x: 0,
@@ -18,11 +20,22 @@ export const Carousel = ({ images, productTitle }: { images: string[]; productTi
     renderWidth: 0,
     renderHeight: 0,
   });
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchEndX, setTouchEndX] = useState<number | null>(null);
   const mainImgRef = useRef<HTMLImageElement>(null);
+  const isMobile = useMediaQuery('(max-width: 900px)');
   const defaultImage = 'https://http2.mlstatic.com/static/org-img/homesnw/mercado-libre.png?v=2';
 
+  const handleChangeImage = (idx: number) => {
+    setFade(true);
+    setTimeout(() => {
+      setSelected(idx);
+      setFade(false);
+    }, 400);
+  };
+
   const handleThumbHover = (idx: number) => {
-    setSelected(idx);
+    handleChangeImage(idx);
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -83,6 +96,31 @@ export const Carousel = ({ images, productTitle }: { images: string[]; productTi
     zoomImgHeight = zoomHeight;
   }
 
+  // Swipe handlers solo para mobile
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!isMobile) return;
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!isMobile) return;
+    setTouchEndX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!isMobile) return;
+    if (touchStartX === null || touchEndX === null) return;
+    const distance = touchStartX - touchEndX;
+    const minSwipeDistance = 50;
+    if (distance > minSwipeDistance && selected < images.length - 1) {
+      handleChangeImage(selected + 1);
+    } else if (distance < -minSwipeDistance && selected > 0) {
+      handleChangeImage(selected - 1);
+    }
+    setTouchStartX(null);
+    setTouchEndX(null);
+  };
+
   return (
     <div className={styles.carousel}>
       <div className={styles.thumbnails}>
@@ -104,8 +142,15 @@ export const Carousel = ({ images, productTitle }: { images: string[]; productTi
         onMouseEnter={() => setZoom(true)}
         onMouseLeave={() => setZoom(false)}
         onMouseMove={handleMouseMove}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
         style={{ position: 'relative' }}
       >
+        {/* Indicador de imagen */}
+        <span className={styles.imageIndicator}>
+          {selected + 1} / {images.length}
+        </span>
         <Image
           ref={mainImgRef as any}
           src={images[selected] || defaultImage}
@@ -114,6 +159,7 @@ export const Carousel = ({ images, productTitle }: { images: string[]; productTi
           width={320}
           height={480}
           style={{ objectFit: 'contain', cursor: 'zoom-in' }}
+          className={fade ? styles.fadeOut : ''}
         />
         {zoom && zoomPos.renderWidth && zoomPos.renderHeight && (
           <>
@@ -136,10 +182,32 @@ export const Carousel = ({ images, productTitle }: { images: string[]; productTi
                 width={zoomImgWidth}
                 height={zoomImgHeight}
                 style={zoomImgStyle}
+                className={fade ? styles.fadeOut : ''}
               />
             </div>
           </>
         )}
+      </div>
+      <div className={styles.dots}>
+        {images.map((_, idx) => (
+          <button
+            key={idx}
+            type="button"
+            aria-label={`Ver imagen ${idx + 1}`}
+            onClick={() => handleChangeImage(idx)}
+            style={{
+              width: 10,
+              height: 10,
+              borderRadius: '50%',
+              background: idx === selected ? '#3483fa' : '#e0e0e0',
+              display: 'inline-block',
+              margin: '0 4px',
+              border: 'none',
+              cursor: 'pointer',
+              padding: 0,
+            }}
+          />
+        ))}
       </div>
     </div>
   );
