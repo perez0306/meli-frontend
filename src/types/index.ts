@@ -36,6 +36,7 @@ export interface ProductInfoI {
   ratingCount: number;
   stars: string;
   price: number;
+  discount: number;
   priceFormatted: string;
   installments: number;
   installment: string;
@@ -103,4 +104,18 @@ export interface SellerBoxI {
   button: {
     link: string;
   };
+}
+
+export interface MenuOptionsProps {
+  open: boolean;
+  options: MenuOptionI[];
+  selected: number;
+  onSelect: (value: number) => void;
+  onClose: () => void;
+  anchorRef: React.RefObject<HTMLParagraphElement | null>;
+}
+
+export interface MenuOptionI {
+  label: string;
+  value: number;
 }

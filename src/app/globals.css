@@ -26,6 +26,10 @@
   font-display: swap;
 }
 
+html {
+  scroll-behavior: auto !important;
+}
+
 /* Agrega más variantes si tienes (italic, light, etc.) */
 
 :root {
@@ -67,7 +71,7 @@ a {
 }
 
 a:hover {
-  color: rgb(48, 121, 232) !important;
+  color: rgb(48, 121, 232);
   text-decoration: none !important;
 }
 
@@ -75,16 +79,6 @@ a:hover {
   html {
     color-scheme: dark;
   }
-}
-
-:focus {
-  outline: 2px solid #3483fa;
-  outline-offset: 2px;
-}
-
-:focus-visible {
-  outline: 2.5px solid #ff823b;
-  outline-offset: 2px;
 }
 
 .primary,

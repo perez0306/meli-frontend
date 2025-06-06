@@ -41,11 +41,7 @@ export const data = {
       { label: 'Compartir', href: '#' },
     ],
   },
-  images: [
-    'https://http2.mlstatic.com/D_NQ_NP_2X_777643-MLA75395342152_042024-F.webp',
-    'https://http2.mlstatic.com/D_NQ_NP_2X_621964-MLA81364948571_122024-F.webp',
-    'https://http2.mlstatic.com/D_Q_NP_2X_800035-MLA81367078349_122024-R.webp',
-  ],
+  images: ['/imagen.webp', '/imagen.jpeg', '/imagen2.webp'],
   productInfo: {
     status: 'Nuevo',
     sold: '1000',
@@ -82,7 +78,7 @@ export const data = {
   },
   specs: [
     {
-      icon: 'https://http2.mlstatic.com/storage/catalog-technical-specs/images/assets/vectorial/cellphone_size_v3.svg',
+      icon: '/icons/cellphone_size_v3.svg',
       label: 'Tamaño de la pantalla',
       size: '6.6"',
       dimensions: '16.11 cm x 7.74 cm x 8.2 mm',
@@ -93,27 +89,27 @@ export const data = {
       },
     },
     {
-      icon: 'https://http2.mlstatic.com/storage/catalog-technical-specs/images/assets/vectorial/internal_memory.svg',
+      icon: '/icons/internal_memory.svg',
       label: 'Memoria interna',
       value: '256 GB',
     },
     {
-      icon: 'https://http2.mlstatic.com/storage/catalog-technical-specs/images/assets/vectorial/resolution_front_camera.svg',
+      icon: '/icons/resolution_front_camera.svg',
       label: 'Cámara frontal',
       value: '32 Mpx',
     },
     {
-      icon: 'https://http2.mlstatic.com/storage/catalog-technical-specs/images/assets/vectorial/resolution_rear_camera.svg',
+      icon: '/icons/resolution_rear_camera.svg',
       label: 'Cámara trasera',
       value: '50 Mpx',
     },
     {
-      icon: 'https://http2.mlstatic.com/storage/catalog-technical-specs/images/assets/vectorial/fingerprint.svg',
+      icon: '/icons/fingerprint.svg',
       label: 'Desbloqueo',
       value: 'Huella dactilar y reconocimiento facial',
     },
     {
-      icon: 'https://http2.mlstatic.com/storage/catalog-technical-specs/images/assets/vectorial/nfc.svg',
+      icon: '/icons/nfc.svg',
       label: 'Con NFC',
       value: true,
     },

@@ -9,6 +9,22 @@
   font-size: 2.2rem;
   font-weight: 300;
   color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.discount {
+  color: rgba(0, 0, 0, 0.55);
+  font-size: 1rem;
+  font-weight: 400;
+  text-decoration: line-through;
+}
+
+.discountPercentage {
+  color: #00a650;
+  font-size: 1.125rem;
+  font-weight: 400;
 }
 
 .installments {

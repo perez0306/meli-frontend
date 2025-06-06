@@ -5,7 +5,7 @@ import { useMediaQuery } from '@mui/material';
 import Image from 'next/image';
 
 const LENS_SIZE = 180; // px
-const ZOOM_SIZE = 320; // px
+const ZOOM_SIZE = 420; // px
 const ZOOM_SCALE = 1.5;
 
 export const Carousel = ({ images, productTitle }: { images: string[]; productTitle?: string }) => {
@@ -24,7 +24,7 @@ export const Carousel = ({ images, productTitle }: { images: string[]; productTi
   const [touchEndX, setTouchEndX] = useState<number | null>(null);
   const mainImgRef = useRef<HTMLImageElement>(null);
   const isMobile = useMediaQuery('(max-width: 900px)');
-  const defaultImage = 'https://http2.mlstatic.com/static/org-img/homesnw/mercado-libre.png?v=2';
+  const defaultImage = '/imagen.webp';
 
   const handleChangeImage = (idx: number) => {
     setFade(true);
@@ -66,17 +66,17 @@ export const Carousel = ({ images, productTitle }: { images: string[]; productTi
     // Coordenadas relativas dentro de la imagen renderizada
     let x = e.clientX - rect.left - offsetX;
     let y = e.clientY - rect.top - offsetY;
-    // Limitar la lupa dentro de la imagen renderizada
-    x = Math.max(LENS_SIZE / 2, Math.min(renderWidth - LENS_SIZE / 2, x));
-    y = Math.max(LENS_SIZE / 2, Math.min(renderHeight - LENS_SIZE / 2, y));
-    // Guardar la posición de la lupa relativa a la imagen renderizada
+
+    // Permite llegar a los bordes reales de la imagen renderizada
+    x = Math.max(0, Math.min(renderWidth, x));
+    y = Math.max(0, Math.min(renderHeight, y));
     setZoomPos({ x, y, offsetX, offsetY, renderWidth, renderHeight });
   };
 
   // Cálculo para el zoomBox
   let zoomImgStyle = {};
   let zoomImgWidth = 150;
-  let zoomImgHeight = 200;
+  let zoomImgHeight = 300;
   if (mainImgRef.current && zoomPos.renderWidth && zoomPos.renderHeight) {
     const renderWidth = zoomPos.renderWidth;
     const renderHeight = zoomPos.renderHeight;
@@ -89,8 +89,12 @@ export const Carousel = ({ images, productTitle }: { images: string[]; productTi
     // Offset para centrar la lupa
     const transX = percX * zoomWidth - ZOOM_SIZE / 2;
     const transY = percY * zoomHeight - ZOOM_SIZE / 2;
+    const maxTransX = zoomWidth - ZOOM_SIZE;
+    const maxTransY = zoomHeight - ZOOM_SIZE;
+    const safeTransX = Math.max(0, Math.min(transX, maxTransX));
+    const safeTransY = Math.max(0, Math.min(transY, maxTransY));
     zoomImgStyle = {
-      transform: `translate(-${transX}px, -${transY}px)`,
+      transform: `translate(-${safeTransX}px, -${safeTransY}px)`,
     };
     zoomImgWidth = zoomWidth;
     zoomImgHeight = zoomHeight;

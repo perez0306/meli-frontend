@@ -18,7 +18,7 @@
 
 .product-section {
   display: grid;
-  grid-template-columns: 1fr 300px;
+  grid-template-columns: 1fr 320px;
   gap: 24px;
   background: #fff;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
@@ -35,7 +35,7 @@
 }
 
 .right-col {
-  max-width: 300px;
+  max-width: 320px;
   margin-left: auto;
   display: flex;
   flex-direction: column;

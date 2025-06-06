@@ -12,7 +12,7 @@ const DetailProduct = ({ productInfo }: { productInfo: ProductInfoI }) => {
           </li>
         ))}
       </ul>
-      <a href={productInfo.featuresLink} className={styles.link} title="Ver características">
+      <a href="#detail-product" className={styles.link} title="Ver características">
         Ver características
       </a>
     </div>

@@ -75,3 +75,55 @@ Durante el desarrollo, enfrenté desafíos críticos y los abordé estratégicam
 - **Adaptación de la UI al Estilo de Mercado Libre**: El reto inicial fue replicar fielmente el diseño y la experiencia de usuario de Mercado Libre, lo que implicó una maquetación meticulosa y responsive para asegurar una adaptación fluida entre desktop y mobile.
 - **Asegurar Cobertura y Atención al Mínimo Detalle**: En un entorno de e-commerce, cada pequeño detalle impacta al usuario. Mi reto fue garantizar que cada aspecto de la aplicación, desde la accesibilidad hasta la interacción más sutil, cumpliera con los estándares más altos.
 - **Mi Solución**: Para abordar estos retos, utilicé Cursor para refinar meticulosamente la implementación. Esta herramienta de IA me permitió optimizar el código y el diseño de los componentes, asegurando la fidelidad visual y funcional en todos los dispositivos. Con su ayuda, pude atacar el mínimo detalle, garantizando que cada elemento cumpliera con los altos estándares de calidad y accesibilidad esperados en un entorno de e-commerce, logrando una mayor cobertura y cumplimiento de los requisitos.
+
+## Coverage testing
+
+```bash
+   npm run test:coverage
+```
+
+### Resumen General
+
+- **Statements**: 61.83%
+- **Branches**: 47.76%
+- **Functions**: 67.92%
+- **Lines**: 62.17%
+
+### Componentes con 100% de Cobertura
+
+- **Mocks**: 100% en todos los aspectos
+- **Componentes de Detalle de Producto**:
+
+  - `DetailPage` (index.tsx)
+  - `ImagesView`
+  - `OtherOptionsBox`
+  - `PaymentMethodsBox`
+  - `ProductDescriptionBox`
+  - `ProductInfo`
+  - `ProductSpecsBox`
+  - `RelatedLinksSection`
+  - `SellerBox`
+
+- **Componentes Comunes**:
+
+  - `ButtonColor`
+  - `DetailProduct`
+  - `Price`
+  - `TitleDetail`
+
+- **Componentes UI**:
+  - `Divider`
+
+### Componentes con Cobertura Parcial
+
+- **PurchaseBox**: 66.66% (Statements), 50% (Functions)
+- **BestSellerTag**: 85.71% (Statements)
+- **Button**: 83.33% (Statements)
+- **Carousel**: 37.89% (Statements), 30.23% (Branches), 42.85% (Functions)
+
+### Estado Actual de las Pruebas
+
+- **Test Suites**: 18 passed, 18 total
+- **Tests**: 23 passed, 23 total
+- **Snapshots**: 0 total
+- **Tiempo de Ejecución**: 3.816s

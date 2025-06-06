@@ -28,7 +28,7 @@
 }
 
 .selected {
-  border: 2.5px solid #3483fa !important;
+  border: 1.5px solid #3483fa !important;
   box-shadow: 0 0 0 2px #e3eefd;
   object-fit: contain;
 }
@@ -48,7 +48,7 @@
   object-fit: contain;
   border-radius: 16px;
   cursor: zoom-in;
-  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: none;
   opacity: 1;
   -webkit-tap-highlight-color: transparent;
   outline: none;
@@ -167,5 +167,9 @@
     padding: 4px 8px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
     z-index: 10;
+  }
+
+  .mainImage img {
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
